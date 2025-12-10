@@ -71,9 +71,14 @@ const NavBar = () => {
         </div>
 
         {/* LOGO + WEBSITE NAME */}
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold">
+
+  {/* <span to="/" className="btn btn-ghost text-xl">
+    <Logo />
+</span> */}
+
+        <Link to="/" className="flex items-center gap-2 text-xl font-bold ">
           <Logo />
-          <span>eTuitionBD</span>
+          <span className="text-secondary">eTuitionBD</span>
         </Link>
       </div>
 
