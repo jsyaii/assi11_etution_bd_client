@@ -1,10 +1,4 @@
-// import React from 'react';
-// import { useForm } from 'react-hook-form';
-// import useAuth from '../../../hooks/useAuth';
-// import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import SocialLogin from '../SocialLogin/SocialLogin';
-// import axios from 'axios';
-// import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hook/useAuth";

@@ -1,159 +1,205 @@
-// import React from "react";
-// import { Link, NavLink, Outlet } from "react-router";
-// import useRole from "../hooks/useRole";
 
-// // icons (optional)
-// import { FaHome, FaUserCog, FaMoneyCheckAlt, FaClipboardList, FaUsers } from "react-icons/fa";
-// import { MdPostAdd } from "react-icons/md";
-// import { GiTeacher } from "react-icons/gi";
-// import { HiDocumentReport } from "react-icons/hi";
-// import { BsFillBriefcaseFill } from "react-icons/bs";
 
-// const DashboardLayout = () => {
-//   const { role } = useRole(); // expected: "student" | "tutor" | "admin"
 
-//   return (
-//     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
-//       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+// import { MdAdminPanelSettings, MdOutlineArrowBackIos, MdOutlineAttachMoney } from "react-icons/md";
+// import Logo from "../Components/Logo/Logo";
+// import useAuth from "../hook/useAuth";
+// import useRole from "../hook/useRole";
+// import { FaListUl, FaUserGraduate } from "react-icons/fa6";
+// import { NavLink, Outlet } from "react-router";
+// import { BiSolidDashboard } from "react-icons/bi";
+// import { IoAddOutline } from "react-icons/io5";
+// import { RiGraduationCapFill, RiMoneyDollarCircleLine } from "react-icons/ri";
+// import { IoIosSettings } from "react-icons/io";
+// import { PiListDashesFill } from "react-icons/pi";
+// import { BsCheckAll } from "react-icons/bs";
+// import { FaUsersCog } from "react-icons/fa";
+// import { HiMiniListBullet } from "react-icons/hi2";
 
-//       <div className="drawer-content">
-//         {/* Navbar */}
-//         <nav className="navbar w-full bg-base-300">
-//           <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
-//             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
-//               <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2-2z"></path>
-//               <path d="M9 4v16"></path>
-//               <path d="M14 10l2 2l-2 2"></path>
-//             </svg>
-//           </label>
 
-//           <div className="px-4 font-semibold">Tuition Management Dashboard</div>
-//         </nav>
+// const Dashboard = () => {
+//     const { user } = useAuth();
+//     const { role } = useRole();
 
-//         {/* Page content */}
-//         <div className="p-4">
-//           <Outlet />
+//     const isAdmin = role === "Admin";
+//     const isTutor = role === "Tutor";
+//     const isStudent = role === "Student";
+
+//     return (
+//         <div className="bg-linear-to-br from-[#0f172a] via-[#101828] to-[#1e293b] min-h-screen">
+//             <div className="flex flex-col md:flex-row max-w-7xl mx-auto h-screen">
+
+//                 {/* //panel  */}
+//                 <aside className="w-full md:w-80 border-r border-black/30 flex flex-col">
+//                     <div className="p-8 text-center border-b border-black/30">
+//                         <Logo />
+//                         <br />
+//                         <h2 className="text-2xl font-bold text-white">{user?.displayName}</h2>
+//                         <p className="text-gray-200 text-lg mt-2 flex items-center justify-center gap-2">
+//                             {isAdmin && 
+//                             <><MdAdminPanelSettings /> Admin</>}
+//                             {isTutor && 
+//                             <><FaUserGraduate /> Tutor</>}
+//                             {isStudent && 
+//                             <><FaUserGraduate /> Student</>}
+//                         </p>
+//                     </div>
+
+//                     <div className="flex flex-col items-center gap-3 mt-3 px-3 flex-1">
+//                         <NavLink
+//                             to="/dashboard"
+//                             end
+//                             className={({ isActive }) =>
+//                                 `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                             }
+//                         >
+//                             <BiSolidDashboard className="text-2xl" />
+//                             <span className="text-lg font-medium">Dashboard</span>
+//                         </NavLink>
+
+//                         {/* ------------------------------------------------------- */}
+//                         {/* //student dashboard buttons */}
+
+//                         {isStudent &&
+//                             <NavLink
+//                                 to="/dashboard/new-tuition"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <IoAddOutline className="text-3xl" />
+//                                 <span className="text-lg font-medium">Add Tuition</span>
+//                             </NavLink>
+//                         }
+
+//                         {isStudent &&
+//                             <NavLink
+//                                 to="/dashboard/my-tuitions"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <FaListUl className="text-2xl shrink-0" />
+//                                 <span className="text-lg font-medium">My Tuitions</span>
+//                             </NavLink>
+//                         }
+
+//                         {isStudent &&
+//                             <NavLink
+//                                 to="/dashboard/my-tutors"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <RiGraduationCapFill className="text-2xl" />
+//                                 <span className="text-lg font-medium">Tutors</span>
+//                             </NavLink>
+//                         }
+
+//                         {isStudent &&
+//                             <NavLink
+//                                 to="/dashboard/my-payments"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all  ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <MdOutlineAttachMoney className="text-2xl" />
+//                                 <span className="text-lg font-medium">Payments</span>
+//                             </NavLink>
+//                         }
+
+//                         {isStudent &&
+//                             <NavLink
+//                                 to="/dashboard/profile"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <IoIosSettings className="text-2xl" />
+//                                 <span className="text-lg font-medium">Profile</span>
+//                             </NavLink>
+//                         }
+
+//                         {/* ------------------------------------------------------- */}
+//                         {/* //tutor dashboard buttons */}
+//                         {isTutor &&
+//                             <NavLink
+//                                 to="/dashboard/applied-tuitions"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <PiListDashesFill className="text-2xl" />
+//                                 <span className="text-lg font-medium">My Applications</span>
+//                             </NavLink>
+//                         }
+
+//                         {isTutor &&
+//                             <NavLink
+//                                 to="/dashboard/approved-tuitions"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <BsCheckAll className="text-2xl" />
+//                                 <span className="text-lg font-medium">Ongoing Tuitions</span>
+//                             </NavLink>
+//                         }
+
+//                         {isTutor &&
+//                             <NavLink
+//                                 to="/dashboard/revenue"
+//                                 className={({ isActive }) =>
+//                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                                 }
+//                             >
+//                                 <RiMoneyDollarCircleLine className="text-2xl" />
+//                                 <span className="text-lg font-medium">Revenue</span>
+//                             </NavLink>
+//                         }
+
+
+//                         {/* ------------------------------------------------------- */}
+//                         {/* //admin dashboard buttons */}
+//                         {isAdmin && 
+//                         <NavLink
+//                             to="/dashboard/admin/manage-users"
+//                             className={({ isActive }) =>
+//                                 `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                             }
+//                         >
+//                             <FaUsersCog className="text-2xl" />
+//                             <span className="text-lg font-medium">Manage Users</span>
+//                         </NavLink>}
+
+//                         {isAdmin && 
+//                         <NavLink
+//                             to="/dashboard/admin/manage-applications"
+//                             className={({ isActive }) =>
+//                                 `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
+//                             }
+//                         >
+//                             <HiMiniListBullet className="text-2xl" />
+//                             <span className="text-lg font-medium">Manage Applications</span>
+//                         </NavLink>}
+//                     </div>
+                    
+//                     <NavLink to='/' className="w-50 flex justify-center items-center gap-4 rounded-xl transition-all mx-auto  mb-3 text-gray-300 hover:bg-white/10 py-3" > 
+//                         <MdOutlineArrowBackIos className="text-2xl" /> 
+//                         <span className="text-lg font-medium">Back to home</span>
+//                     </NavLink>
+//                 </aside>
+
+//                 {/* //outlet */}
+//                 <main className="flex-1 w-full p-2 md:p-10  overflow-y-auto">
+//                     <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-10 min-h-screen">
+//                         <Outlet />
+//                     </div>
+//                 </main>
+
+//             </div>
 //         </div>
-//       </div>
-
-//       <div className="drawer-side is-drawer-close:overflow-visible">
-//         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-
-//         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-//           <ul className="menu w-full grow">
-
-//             {/* Home */}
-//             <li>
-//               <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-//                 <FaHome />
-//                 <span className="is-drawer-close:hidden">Homepage</span>
-//               </Link>
-//             </li>
-
-//             {/* ✅ STUDENT MENU */}
-//             {role === "student" && (
-//               <>
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions" to="/dashboard/student/my-tuitions">
-//                     <FaClipboardList />
-//                     <span className="is-drawer-close:hidden">My Tuitions</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Post New Tuition" to="/dashboard/student/post-tuition">
-//                     <MdPostAdd />
-//                     <span className="is-drawer-close:hidden">Post New Tuition</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to="/dashboard/student/applied-tutors">
-//                     <GiTeacher />
-//                     <span className="is-drawer-close:hidden">Applied Tutors</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/student/payments">
-//                     <FaMoneyCheckAlt />
-//                     <span className="is-drawer-close:hidden">Payments</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile Settings" to="/dashboard/student/profile">
-//                     <FaUserCog />
-//                     <span className="is-drawer-close:hidden">Profile Settings</span>
-//                   </NavLink>
-//                 </li>
-//               </>
-//             )}
-
-//             {/* ✅ TUTOR MENU */}
-//             {role === "tutor" && (
-//               <>
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/tutor/my-applications">
-//                     <FaClipboardList />
-//                     <span className="is-drawer-close:hidden">My Applications</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Ongoing Tuitions" to="/dashboard/tutor/ongoing-tuitions">
-//                     <BsFillBriefcaseFill />
-//                     <span className="is-drawer-close:hidden">Ongoing Tuitions</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue History" to="/dashboard/tutor/revenue-history">
-//                     <FaMoneyCheckAlt />
-//                     <span className="is-drawer-close:hidden">Revenue History</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile Settings" to="/dashboard/tutor/profile">
-//                     <FaUserCog />
-//                     <span className="is-drawer-close:hidden">Profile Settings</span>
-//                   </NavLink>
-//                 </li>
-//               </>
-//             )}
-
-//             {/* ✅ ADMIN MENU */}
-//             {role === "admin" && (
-//               <>
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="User Management" to="/dashboard/admin/users">
-//                     <FaUsers />
-//                     <span className="is-drawer-close:hidden">User Management</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tuition Management" to="/dashboard/admin/tuitions">
-//                     <FaClipboardList />
-//                     <span className="is-drawer-close:hidden">Tuition Management</span>
-//                   </NavLink>
-//                 </li>
-
-//                 <li>
-//                   <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Reports & Analytics" to="/dashboard/admin/reports">
-//                     <HiDocumentReport />
-//                     <span className="is-drawer-close:hidden">Reports & Analytics</span>
-//                   </NavLink>
-//                 </li>
-//               </>
-//             )}
-
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
+//     );
 // };
 
-// export default DashboardLayout;
+// export default Dashboard;
