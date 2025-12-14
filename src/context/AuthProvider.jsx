@@ -10,9 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { auth } from "../firebase/firebase.config";
-// import { AuthContext } from "./AuthContext";
-// import { auth } from "../pages/Firebase/firebase.config";
-// import { useEffect, useState } from "react";
+
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -20,17 +18,20 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   // Register with email/password
   const registerUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+
   // Login with email/password
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+  
 
   // Google login
   const signInGoogle = () => {
