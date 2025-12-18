@@ -62,7 +62,7 @@ const Dashboard = () => {
 
                         {isStudent &&
                             <NavLink
-                                to="/dashboard/new-tuition"
+                                to="/dashboard/newtuitions"
                                 className={({ isActive }) =>
                                     `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
                                 }

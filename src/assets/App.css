@@ -1,0 +1,217 @@
+/* ===============================
+   🌐 GLOBAL RESET & BASE STYLES
+================================ */
+
+* {
+  font-family: 'Lexend Deca', Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at top, #0f172a, #020617);
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* ===============================
+   🧾 INPUTS & FORMS
+================================ */
+
+input,
+textarea,
+select {
+  background: rgba(15, 23, 42, 0.7);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.5);
+}
+
+/* ===============================
+   🔗 LINKS (Premium Hover)
+================================ */
+
+a {
+  position: relative;
+  color: #5eead4;
+  text-decoration: none;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ===============================
+   🔘 BUTTONS (Premium Style)
+================================ */
+
+.btn-premium {
+  padding: 0.7rem 1.6rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #2dd4bf, #38bdf8);
+  color: #020617;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(45, 212, 191, 0.35);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(56, 189, 248, 0.45);
+}
+
+.btn-premium:active {
+  transform: scale(0.97);
+}
+
+/* Neutral / secondary button */
+.btn-soft {
+  padding: 0.65rem 1.4rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+}
+
+.btn-soft:hover {
+  background: rgba(45, 212, 191, 0.15);
+  border-color: #2dd4bf;
+}
+
+/* ===============================
+   🪟 GLASSMORPHISM CARD
+================================ */
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  padding: 1.5rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ===============================
+   🧭 NAVBAR / HEADER
+================================ */
+
+.nav-glass {
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ===============================
+   ⚡ LOADER (Modern Glow)
+================================ */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 44px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #5eead4, transparent 60%),
+    radial-gradient(circle at 70% 70%, #38bdf8, transparent 60%);
+  filter: blur(0.6px);
+  animation: spinGlow 1.1s infinite linear;
+}
+
+@keyframes spinGlow {
+  0% {
+    transform: rotate(0deg) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* ===============================
+   🧩 UTILITIES
+================================ */
+
+.text-gradient {
+  background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.round-xl {
+  border-radius: 1.25rem;
+}
+
+/* ===============================
+   🚫 SCROLLBAR (optional but sexy)
+================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#2dd4bf, #38bdf8);
+  border-radius: 10px;
+}
