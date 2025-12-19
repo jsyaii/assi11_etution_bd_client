@@ -17,7 +17,11 @@ const useRole = () => {
     })
 
     return {
-        role: role === "admin" ? "Admin" : role === "tutor" ? "Tutor" : "Student"
+       role: role.toLowerCase() === 'admin'
+        ? 'Admin'
+        : role.toLowerCase() === 'tutor'
+        ? 'Tutor'
+        : 'Student',
     };
 };
 

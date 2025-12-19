@@ -16,6 +16,13 @@ import TuitionInfo from "../pages/Student/TuitionInfo/TuitionInfo";
 import MyTuitions from "../pages/Student/MyTution/MyTution";
 import CreateTuition from "../pages/Student/CreateTution/CreateTution";
 import Tuitions from "../pages/Student/Tuitions/Tuitions";
+import Applicants from "../pages/Tutor/Applicants/Applicants";
+import AdminManageTuitions from "../pages/Admin/AdminManageTuition/AdminManageTuition";
+import AppliedTuitions from "../pages/Tutor/AppliedTuitions/AppliedTuitions";
+import AdminManageUser from "../pages/Admin/AdminManageUser/AdminManageUser";
+import AdminRoute from "./AdminRoute";
+import ApprovedTuitions from "../pages/Tutor/ApprovedTuitions/ApprovedTuitions";
+import Tutors from "../pages/Tutors/Tutors";
 
 
 export const router = createBrowserRouter([
@@ -39,6 +46,10 @@ Component: HomeLayouts
                  <TuitionInfo />
                   </PrivateRoute> }
                   ,
+
+                   { path: "tutors", 
+                    element: <Tutors />
+                     },
 
 
 {
@@ -83,12 +94,27 @@ Component: Register,
                element: <PrivateRoute>
                 <MyTuitions/>
                   </PrivateRoute> },
-            // { path: "my-tutors", element: <Private> <Fade> <MyTutors /></Fade> </Private> },
-            // { path: "applied-tuitions", element: <Private> <Fade> <AppliedTuitions /></Fade> </Private> },
-            // { path: "approved-tuitions", element: <Private> <Fade> <ApprovedTuitoins /></Fade> </Private> },
-            // { path: "revenue", element: <Private> <Fade> <Revenue /></Fade> </Private> },
-            // { path: "admin/manage-users", element: <Private> <Fade> <AdminManageUser /></Fade> </Private> },
-            // { path: "admin/manage-applications", element: <Private> <Fade> <AdminManageApplications /></Fade> </Private> },
+
+                   { path: "applicants", 
+                    element: <Applicants /> 
+                  },
+            { path: "applied-tuitions",
+               element: <AppliedTuitions />
+               },
+            { path: "approved-tuitions",
+               element: <ApprovedTuitions /> 
+              },
+            // { path: "revenue", element: <Revenue /> },
+            { path: "admin/manage-users", 
+              element:
+              <AdminRoute>
+<AdminManageUser />
+              </AdminRoute> ,
+              
+             },
+            // { path: "admin/platform-revenue", element: <AdminSiteRevenue /> },
+            { path: "admin/manage-tuitions", 
+              element: <AdminManageTuitions /> },
             
         ],
     },

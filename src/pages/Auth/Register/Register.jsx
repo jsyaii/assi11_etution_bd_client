@@ -5,6 +5,7 @@ import useAuth from "../../../hook/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,53 +14,96 @@ const Register = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
-  const handleRegistration = (data) => {
-    const profileImg = data.photo[0];
+  // const handleRegistration = (data) => {
+  //   const profileImg = data.photo[0];
 
-    registerUser(data.email, data.password)
-      .then(() => {
+  //   registerUser(data.email, data.password)
+  //     .then(() => {
 
-        // 1️⃣ upload image to imgbb
-        const formData = new FormData();
-        formData.append('image', profileImg);
+  //       // 1️⃣ upload image to imgbb
+  //       const formData = new FormData();
+  //       formData.append('image', profileImg);
 
-        const image_API_URL =
-          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`;
+  //       const image_API_URL =
+  //         `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`;
 
-        axios.post(image_API_URL, formData)
-          .then(res => {
-            const photoURL = res.data.data.url;
+  //       axios.post(image_API_URL, formData)
+  //         .then(res => {
+  //           const photoURL = res.data.data.url;
 
-            // 2️⃣ update firebase profile
-            const userProfile = {
-              displayName: data.name,
-              photoURL: photoURL,
-            };
+  //           // 2️⃣ update firebase profile
+  //           const userProfile = {
+  //             displayName: data.name,
+  //             photoURL: photoURL,
+  //           };
 
-            updateUserProfile(userProfile)
-              .then(() => {
+  //           updateUserProfile(userProfile)
+  //             .then(() => {
 
-                // 3️⃣ save user to MongoDB
-                const userInfo = {
-                  name: data.name,
-                  email: data.email,
-                  phone: data.phone,
-                  role: data.role, // student | tutor
-                  photoURL: photoURL,
-                  createdAt: new Date(),
-                };
+  //               // 3️⃣ save user to MongoDB
+  //               const userInfo = {
+  //                 name: data.name,
+  //                 email: data.email,
+  //                 phone: data.phone,
+  //                 role: data.role, // student | tutor
+  //                 photoURL: photoURL,
+  //                 createdAt: new Date(),
+  //               };
 
-                axiosSecure.post('/users', userInfo)
-                  .then(res => {
-                    if (res.data.insertedId) {
-                      navigate(location.state || '/');
-                    }
-                  });
-              });
-          });
-      })
-      .catch(error => console.log(error));
-  };
+  //               axiosSecure.post('/users', userInfo)
+  //                 .then(res => {
+  //                   if (res.data.insertedId) {
+  //                     navigate(location.state || '/');
+  //                   }
+  //                 });
+  //             });
+  //         });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+const handleRegistration = async (data) => {
+  const profileImg = data.photo[0];
+
+  try {
+    // 1️⃣ Register user in Firebase
+    await registerUser(data.email, data.password);
+
+    // 2️⃣ Upload image to imgbb
+    const formData = new FormData();
+    formData.append('image', profileImg);
+    const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`;
+    const imgRes = await axios.post(image_API_URL, formData);
+    const photoURL = imgRes.data.data.url;
+
+    // 3️⃣ Update Firebase profile
+    await updateUserProfile({ displayName: data.name, photoURL });
+
+    // 4️⃣ Save user to MongoDB
+   const userInfo = {
+  name: data.name,
+  email: data.email,
+  phone: data.phone,
+  userRole: data.role, // ✅ THIS IS THE FIX
+  photoURL,
+  createdAt: new Date(),
+};
+
+
+    const mongoRes = await axiosSecure.post('/users', userInfo);
+    if (mongoRes.data.insertedId) {
+      navigate(location.state || '/');
+    }
+
+  } catch (error) {
+    // Handle Firebase specific errors
+    if (error.code === "auth/email-already-in-use") {
+      Swal.fire("Error", "This email is already registered. Please login instead.", "error");
+    } else {
+      Swal.fire("Error", error.message || "Registration failed.", "error");
+    }
+    console.error(error);
+  }
+};
 
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shadow-2xl">

@@ -1,15 +1,4 @@
-// import React, { useState } from "react";
-// import { useNavigate, useParams } from "react-router";
-// import useAxiosSecure from "../Hooks/useAxiosSecure";
-// import { useQuery } from "@tanstack/react-query";
-// import Loading from "../Loading/Loading";
-// import useAuth from "../Hooks/useAuth";
-// import Swal from "sweetalert2";
-// import { MdDelete } from "react-icons/md";
-// import useRole from "../Hooks/useRole";
-// import { FiEdit } from "react-icons/fi";
-// import { IoArrowForward } from "react-icons/io5";
-// import { GrFormNext } from "react-icons/gr";
+
 
 import { useNavigate, useParams } from "react-router";
 import useAuth from "../../../hook/useAuth";
@@ -154,12 +143,12 @@ const TuitionInfo = () => {
       }
     });
 
-    //apply as tutor
-    const handleApplyasTutor = () => {
+//     //apply as tutor
+//     const handleApplyasTutor = () => {
 
 
 
-    }
+//     }
 
   }
 
@@ -299,15 +288,16 @@ const TuitionInfo = () => {
 
             </button>}
 
-            {isTutor &&
-              <button
-                onClick={handleApplyasTutor}
-                disabled={!isTutor}
-                className="btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50 w-1/3 h-12 text-xl"
-              >
-                Apply as Tutor
-                <GrFormNext></GrFormNext>
-              </button>}
+          {isTutor && !isCreator && (
+  <button
+    onClick={handleApplyasTutor}
+    className="btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50 w-1/3 h-12 text-xl"
+  >
+    Apply as Tutor
+    <GrFormNext />
+  </button>
+)}
+
 
 
 

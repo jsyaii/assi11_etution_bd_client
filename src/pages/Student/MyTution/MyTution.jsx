@@ -53,7 +53,7 @@ const MyTuitions = () => {
                 if (result.isConfirmed) {
                     const updatedValues = result.value;
                     axiosSecure
-                        .patch(`/tutions/${tuition._id}`, updatedValues)
+                        .patch(`/tuitions/${tuition._id}`, updatedValues)
                         .then(() => {
                             Swal.fire("Updated!", "Tuition updated successfully.", "success");
                             refetch();
