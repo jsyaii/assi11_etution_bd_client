@@ -1,14 +1,23 @@
-import { Navigate } from "react-router";
-import useRole from "../hook/useRole";
+import React from 'react';
+import useAuth from '../hook/useAuth';
+import useRole from '../hook/useRole';
+import Loading from '../Components/Loading/Loading';
+import Forbidden from '../Components/Forbidden/Forbidden';
 
-
-const StudentRoute = ({ children }) => {
+export const StudentRoute = ({ children }) => {
+  const { loading } = useAuth();
   const { role, roleLoading } = useRole();
 
-  if (roleLoading) return <p>Checking role...</p>;
-  if (role !== "student") return <Navigate to="/unauthorized" replace />;
+  if (loading || roleLoading) {
+    return <Loading />;
+  }
+
+  if (role !== "Student") {
+    return <Forbidden />;
+  }
 
   return children;
 };
+
 
 export default StudentRoute;

@@ -4,15 +4,9 @@ import HomeLayouts from "../layouts/HomeLayouts";
 import LogIn from "../pages/Auth/LogIn/LogIn";
 import Register from "../pages/Auth/Register/Register";
 import AuthLayout from "../layouts/AuthLayouts";
-
-// import DashboardLayout from "../layouts/DashboardLayout";
-import StudentRoute from "./StudentRoute";
-import CreateTution from "../pages/Student/CreateTution/CreateTution";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layouts/DashboardLayout";
-import MyTution from "../pages/Student/MyTution/MyTution";
 import TuitionInfo from "../pages/Student/TuitionInfo/TuitionInfo";
-
 import MyTuitions from "../pages/Student/MyTution/MyTution";
 import CreateTuition from "../pages/Student/CreateTution/CreateTution";
 import Tuitions from "../pages/Student/Tuitions/Tuitions";
@@ -23,6 +17,17 @@ import AdminManageUser from "../pages/Admin/AdminManageUser/AdminManageUser";
 import AdminRoute from "./AdminRoute";
 import ApprovedTuitions from "../pages/Tutor/ApprovedTuitions/ApprovedTuitions";
 import Tutors from "../pages/Tutors/Tutors";
+import MyPayments from "../pages/Student/MyPayments/MyPayments";
+import PaymentSuccess from "../pages/Student/PaymentSuccess/PaymentSuccess";
+import MyProfile from "../pages/MyProfile/MyProfile";
+import ContractPage from "../pages/Contract/Contract";
+import TutorRoute from "./TutorRoute";
+import StudentRoute from "./StudentRoute";
+import Revenue from "../pages/Tutor/Revenue/Revenue";
+import CreateTutor from "../pages/Tutors/NewTutor";
+
+
+
 
 
 export const router = createBrowserRouter([
@@ -35,11 +40,9 @@ index:true,
 Component: HomeLayouts
         },
 
-
         { path: "tuitions",
            element: <Tuitions />
            },
-        
         
             { path: "tuitions/:id",
                element: <PrivateRoute>
@@ -49,6 +52,9 @@ Component: HomeLayouts
 
                    { path: "tutors", 
                     element: <Tutors />
+                     },
+                   { path: "contract", 
+                    element: <ContractPage></ContractPage>
                      },
 
 
@@ -67,7 +73,17 @@ Component: LogIn,
 path:"/register",
 Component: Register,
 
-}
+},
+
+
+  { path: "/newtutor",
+  element: <PrivateRoute>
+    <TutorRoute>
+      <CreateTutor/>,
+    </TutorRoute>
+    </PrivateRoute> },
+
+
     ]
 },
 
@@ -80,31 +96,86 @@ Component: Register,
            <Dashboard/>
            </PrivateRoute>,
         children: [
-            // { path: "profile", element: <PrivateRoute>  <MyProfile /> </PrivateRoute> },
+            { path: "profile",
+               element: <PrivateRoute>
+                  <MyProfile />
+                 </PrivateRoute> },
+
+                //  Student Routes
             { path: "newtuitions",
-               element: <PrivateRoute> 
-                 <CreateTuition/>
+               element: <PrivateRoute>, 
+             <StudentRoute>
+<CreateTuition/>,
+             </StudentRoute>
+                 
                   </PrivateRoute> 
                   },
 
 
-            // { path: "my-payments", element: <Private> <Fade> <MyPayments /></Fade> </Private> },
-            // { path: "payment-success", element: <Private> <Fade> <PaymentSuccess /></Fade> </Private> },
+            { 
+              path: "my-payments",
+               element:
+                <PrivateRoute> 
+                <StudentRoute>
+<MyPayments />,
+                </StudentRoute>
+                  </PrivateRoute>
+                  },
+
+
+            { path: "payment-success",
+               element: <PrivateRoute>
+                  <PaymentSuccess />
+                   </PrivateRoute>
+                    },
             { path: "my-tuitions",
                element: <PrivateRoute>
                 <MyTuitions/>
                   </PrivateRoute> },
 
                    { path: "applicants", 
-                    element: <Applicants /> 
+                    element: 
+                    <PrivateRoute>
+                       <StudentRoute>
+                      <Applicants />,
+                    </StudentRoute>
+                    </PrivateRoute>
+                    
+                    
                   },
+
+// Tutor Routes
+
             { path: "applied-tuitions",
-               element: <AppliedTuitions />
+               element:
+               <TutorRoute>
+                 <AppliedTuitions />,
+                </TutorRoute>
+              
                },
+
+
             { path: "approved-tuitions",
-               element: <ApprovedTuitions /> 
+               element:
+               <TutorRoute>
+<ApprovedTuitions /> ,
+               </TutorRoute>
+                
               },
-            // { path: "revenue", element: <Revenue /> },
+
+            { path: "revenue",
+               element:
+               <TutorRoute>
+ <Revenue />,
+               </TutorRoute>
+               
+               },
+
+ 
+
+
+
+// Admin Routes
             { path: "admin/manage-users", 
               element:
               <AdminRoute>
@@ -113,8 +184,12 @@ Component: Register,
               
              },
             // { path: "admin/platform-revenue", element: <AdminSiteRevenue /> },
-            { path: "admin/manage-tuitions", 
-              element: <AdminManageTuitions /> },
+           
+              { path: "admin/manage-tuitions", 
+                element: <AdminRoute> 
+                  <AdminManageTuitions /> 
+                </AdminRoute> },
+
             
         ],
     },

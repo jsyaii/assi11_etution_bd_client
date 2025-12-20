@@ -1,12 +1,13 @@
 
 import { useNavigate } from "react-router";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
+
 import useRole from "../../../hook/useRole";
-import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
-import { TiTick } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
+import { TiTick } from "react-icons/ti";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const AdminManageTuitions = () => {
     const axiosSecure = useAxiosSecure();

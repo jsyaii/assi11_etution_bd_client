@@ -49,7 +49,7 @@ const Navbar = () => {
                             Dashboard
                         </NavLink>
                         {!user && (
-                            <NavLink className="btn btn-ghost" to={"/contact"}>
+                            <NavLink className="btn btn-ghost" to={"/contract"}>
                                 Contact
                             </NavLink>
                         )}

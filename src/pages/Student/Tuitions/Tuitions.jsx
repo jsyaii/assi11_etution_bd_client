@@ -4,13 +4,14 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { Link, useNavigate } from "react-router";
 import Loading from "../../../Components/Loading/Loading";
 import { IoMdAdd } from "react-icons/io";
+import useRole from "../../../hook/useRole";
 
 const Tuitions = () => {
   const [tuitions, setTuitions] = useState([]);
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-
+const { role, roleLoading } = useRole();
   const handlePostTuition = () => {};
 
   useEffect(() => {
@@ -38,12 +39,14 @@ const Tuitions = () => {
             All Tuitions
           </h3>
 
-          <Link
-            className="btn w-[20rem] h-20 mt-5 rounded-4xl text-2xl hover:scale-103  btn-neutral bg-teal-500 text-black hover:bg-teal-300/50"
-            to={"/dashboard/newtuitions"}
-          >
-            <IoMdAdd className="scale-120" /> Post a Tuition
-          </Link>
+        {role === "Student" && (
+            <Link
+              to="/dashboard/newtuitions"
+              className="btn w-[20rem] h-20 mt-5 rounded-4xl text-2xl hover:scale-103 btn-neutral bg-teal-500 text-black hover:bg-teal-300/50"
+            >
+              <IoMdAdd className="scale-120" /> Post a Tuition
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-8">

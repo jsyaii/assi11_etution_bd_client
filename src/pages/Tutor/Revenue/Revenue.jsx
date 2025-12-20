@@ -4,16 +4,19 @@
 // import useAuth from "../../../hook/useAuth";
 // import useAxiosSecure from "../../../hook/useAxiosSecure";
 // import { useQuery } from "@tanstack/react-query";
+// import Loading from "../../../Components/Loading/Loading";
 
-// const ApprovedTuitions = () => {
+// const Revenue = () => {
 //     const { user } = useAuth();
 //     const axiosSecure = useAxiosSecure();
 //     const tutorEmail = user.email;
 //     const navigate = useNavigate();
 
+
+
 //     const {
 //         data: myApprovedApplications = [],
-//         refetch
+//         refetch, isLoading
 //     } =
 //         useQuery({
 //             queryKey: [`my-approved-applications`, tutorEmail],
@@ -23,15 +26,21 @@
 //             }
 //         })
 
+//     if (isLoading) {
+//         return <Loading></Loading>
+//     }
+
+
 //     return (
 //         <div className="overflow-x-auto">
+
 //             <table className="table">
 //                 <thead>
 //                     <tr className="">
 //                         <th>#</th>
-//                         <th className="text-center">Subject</th>
+//                         <th className="text-center">Student E-mail</th>
 //                         <th className="text-center">Status</th>
-//                         <th className="text-center">Salary</th>
+//                         <th className="text-center">Revenue</th>
 //                         <th className="text-center">Payment Time</th>
 //                     </tr>
 //                 </thead>
@@ -45,15 +54,15 @@
 //                         >
 //                             <th>{index + 1}</th>
 
-//                             <td className="text-center">{application.tuitionSubject}</td>
+//                             <td className="text-center">{application.creatorEmail}</td>
 
 //                             <td className={`text-center font-medium ${application.applicationStatus === `Approved` ? "text-green-500" : "text-amber-500"}`} >
 //                                 {application.applicationStatus === "Approved"
-//                                     ? "Approved"
-//                                     : "Pending Approval"}
+//                                     ? "Paid"
+//                                     : "Unpaid"}
 //                             </td>
 
-//                             <td className="text-center">৳ {application.tutorSalary}</td>
+//                             <td className="text-center">৳ {Number(application.tutorSalary).toLocaleString()}</td>
 //                             <td className="text-center"> {application.paidAt ? new Date(application.paidAt).toLocaleDateString('en', {
 //                                 day: 'numeric',
 //                                 month: 'short',
@@ -69,8 +78,18 @@
 //                     ))}
 //                 </tbody>
 //             </table>
+//             <hr className="mt-5 border-t border-white/20" />
+//             <div className="mt-2 text-right pr-4">
+//                 <p className="text-2xl font-medium text-white text-center">
+//                     Total Revenue : <span className="text-[#00bba7]">
+//                         ৳ {myApprovedApplications
+//                             .reduce((revenue, app) => revenue + app.tutorSalary, 0)
+//                             .toLocaleString()}</span>
+//                 </p>
+//             </div>
 //         </div>
 //     );
 // };
 
-// export default ApprovedTuitions;
+
+// export default Revenue;

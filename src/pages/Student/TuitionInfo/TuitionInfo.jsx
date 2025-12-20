@@ -52,6 +52,40 @@ const TuitionInfo = () => {
     return null;
   }
 
+
+// ================= ADMIN ACTIONS =================
+
+// approve tuition (admin only)
+const handleApproveTuition = async () => {
+  try {
+    await axiosSecure.patch(`/tuitions/approve/${tuition._id}`, {
+      approvalStatus: "Approved",
+    });
+
+    Swal.fire("Approved!", "Tuition has been approved.", "success");
+    refetch(); // reload tuition data
+  } catch (error) {
+    Swal.fire("Error", "Failed to approve tuition.", "error");
+  }
+};
+
+// reject tuition (admin only)
+const handleRejectTuition = async () => {
+  try {
+    await axiosSecure.patch(`/tuitions/reject/${tuition._id}`, {
+      approvalStatus: "Rejected",
+    });
+
+    Swal.fire("Rejected!", "Tuition has been rejected.", "info");
+    refetch(); // reload tuition data
+  } catch (error) {
+    Swal.fire("Error", "Failed to reject tuition.", "error");
+  }
+};
+
+
+
+
   //edit tuition
   const handleTuitionEdit = () => {
     Swal.fire({
@@ -307,6 +341,31 @@ const TuitionInfo = () => {
             >
               <MdDelete />
             </button>}
+
+          </div>
+          <div>
+            {/* ================= ADMIN CONTROLS ================= */}
+{isAdmin && (
+  <div className="flex gap-3 w-full justify-center">
+    
+    {/* Approve Button */}
+    <button
+      onClick={handleApproveTuition}
+      className="btn bg-green-500 hover:bg-green-600 text-black text-xl rounded-xl px-6"
+    >
+      Approve
+    </button>
+
+    {/* Reject Button */}
+    <button
+      onClick={handleRejectTuition}
+      className="btn bg-red-500 hover:bg-red-600 text-white text-xl rounded-xl px-6"
+    >
+      Reject
+    </button>
+
+  </div>
+)}
 
           </div>
         </div>
