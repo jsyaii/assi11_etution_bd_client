@@ -3,6 +3,9 @@ import Logo from "../Logo/Logo";
 import { NavLink } from "react-router";
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import forbiddenAnimation from "../../assets/forbidden (1).json";
+
+
+
 const Forbidden = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 pt-10">

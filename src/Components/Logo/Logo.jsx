@@ -1,6 +1,7 @@
-import React from 'react';
 import Etution from '../../assets/Etutionn.jpg';
 import { Link } from 'react-router';
+
+
 
 const Logo = () => {
     return (

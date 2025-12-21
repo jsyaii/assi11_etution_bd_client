@@ -1,104 +1,97 @@
-// import React from 'react';
-// import { useForm } from 'react-hook-form';
-// import useAuth from '../../../hooks/useAuth';
-// import { Link, useLocation, useNavigate } from 'react-router';
-// import SocialLogin from '../SocialLogin/SocialLogin';
-
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hook/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogIn from "../socialLogIn/socialLogIn";
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signInUser } = useAuth();
-    const location = useLocation();
-    const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signInUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  const handleLogin = (data) => {
+    signInUser(data.email, data.password)
+      .then(() => {
+        navigate(location?.state || "/");
+      })
+      .catch(() => {});
+  };
 
-    const handleLogin = (data) => {
-        console.log('form data', data);
-        signInUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
-                navigate(location?.state || '/')
-            })
-            .catch(error => {
-                console.log(error)
-            })
+  return (
+    /* Page wrapper */
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8">
 
+      {/* Card */}
+      <div className="card bg-base-100 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm shadow-2xl">
 
-    }
+        <h3 className="text-2xl sm:text-3xl text-center mt-6">
+          Welcome back
+        </h3>
+        <p className="text-center text-sm sm:text-base">
+          Please Login
+        </p>
 
+        <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
+          <fieldset className="fieldset space-y-1">
 
+            {/* Email */}
+            <label className="label">Email</label>
+            <input
+              type="email"
+              {...register("email", { required: true })}
+              className="input input-bordered w-full"
+              placeholder="Email"
+            />
+            {errors.email?.type === "required" && (
+              <p className="text-red-500 text-xs sm:text-sm">
+                Email is required
+              </p>
+            )}
 
-//     const handleLogin = async (data) => {
-//   try {
-//     // 1) Firebase login
-//     const result = await signInUser(data.email, data.password);
-//     const email = result?.user?.email;
+            {/* Password */}
+            <label className="label">Password</label>
+            <input
+              type="password"
+              {...register("password", { required: true, minLength: 6 })}
+              className="input input-bordered w-full"
+              placeholder="Password"
+            />
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-500 text-xs sm:text-sm">
+                Password must be 6 characters or longer
+              </p>
+            )}
 
-//     // 2) Get JWT
-//     const jwtRes = await fetch(`${import.meta.env.VITE_API_URL}/jwt`, {
-//       method: "POST",
-//       headers: { "content-type": "application/json" },
-//       body: JSON.stringify({ email }),
-//     });
-//     const jwtData = await jwtRes.json();
-//     localStorage.setItem("access-token", jwtData.token);
+            <div className="text-right">
+              <a className="link link-hover text-xs sm:text-sm">
+                Forgot password?
+              </a>
+            </div>
 
-//     // 3) Get role (secured)
-//     const roleRes = await fetch(
-//       `${import.meta.env.VITE_API_URL}/users/role?email=${email}`,
-//       {
-//         headers: {
-//           authorization: `Bearer ${localStorage.getItem("access-token")}`,
-//         },
-//       }
-//     );
-//     const roleData = await roleRes.json();
+            <button className="btn btn-primary mt-4 w-full h-11 sm:h-12 text-white">
+              Login
+            </button>
+          </fieldset>
 
-//     // 4) Role-based routing
-//     redirectByRole(roleData.role, navigate);
+          <p className="text-center mt-4 text-xs sm:text-sm">
+            New to Zap Shift{" "}
+            <Link
+              state={location.state}
+              className="text-blue-400 underline"
+              to="/register"
+            >
+              Register
+            </Link>
+          </p>
+        </form>
 
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-
-    return (
-        <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-            <h3 className="text-3xl text-center">Welcome back</h3>
-            <p className='text-center'>Please Login</p>
-            <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
-                <fieldset className="fieldset">
-                    {/* email field */}
-                    <label className="label">Email</label>
-                    <input type="email" {...register('email', { required: true })} className="input" placeholder="Email" />
-                    {
-                        errors.email?.type === 'required' && <p className='text-red-500'>Email is required</p>
-                    }
-
-                    {/* password field */}
-                    <label className="label">Password</label>
-                    <input type="password" {...register('password', { required: true, minLength: 6 })} className="input" placeholder="Password" />
-                    {
-                        errors.password?.type === 'minLength' && <p className='text-red-500'>Password must be 6 characters  or longer </p>
-                    }
-
-
-                    <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn btn-primary mt-4 w-full h-12 text-white">Login</button>
-                </fieldset>
-                <p>New to Zap Shift <Link
-                    state={location.state}
-                    className='text-blue-400 underline'
-                    to="/register">Register</Link></p>
-            </form>
-            <SocialLogIn></SocialLogIn>
+        <div className="px-4 sm:px-6 pb-6">
+          <SocialLogIn />
         </div>
-    );
+
+      </div>
+    </div>
+  );
 };
 
 export default Login;

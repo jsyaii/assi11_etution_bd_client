@@ -1,5 +1,4 @@
 
-
 import { useNavigate } from "react-router";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useRole from "../../../hook/useRole";
@@ -7,7 +6,6 @@ import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
 import { TbUserEdit } from "react-icons/tb";
 import { FaTrash } from "react-icons/fa";
-import { BsFillEyeFill } from "react-icons/bs";
 import { useQuery } from "@tanstack/react-query";
 
 const AdminManageUser = () => {

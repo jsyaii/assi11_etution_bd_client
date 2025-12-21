@@ -25,6 +25,12 @@ import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
 import Revenue from "../pages/Tutor/Revenue/Revenue";
 import CreateTutor from "../pages/Tutors/NewTutor";
+import VerifiedTutor from "../pages/Admin/VerifiedTutor/VerifiedTutor";
+import About from "../Components/About/About";
+import ErrorPage from "../Components/Error/Error";
+import AdminRevenue from "../pages/Admin/AdminRevenue/AdminRevenue";
+import AdminDashboard from "../pages/Admin/AdminDashboard/AdminDashboard";
+import Chat from "../Components/Chat/Chat";
 
 
 
@@ -56,7 +62,13 @@ Component: HomeLayouts
                    { path: "contract", 
                     element: <ContractPage></ContractPage>
                      },
-
+                   { path: "about", 
+                    element: <About></About>
+                     },
+{
+path: "/chat", 
+                    element: <Chat></Chat>
+},
 
 {
 path: "/",
@@ -183,7 +195,29 @@ Component: Register,
               </AdminRoute> ,
               
              },
-            // { path: "admin/platform-revenue", element: <AdminSiteRevenue /> },
+            { path: "admin/verify-tutors", 
+              element:
+              <AdminRoute>
+<VerifiedTutor/>,
+              </AdminRoute> ,
+              
+             },
+
+
+
+
+            { path: "admin/platform-revenue", 
+              element: <AdminRoute>
+ <AdminRevenue/> ,
+              </AdminRoute>
+             
+            },
+            { path: "admin/admin-dashboard", 
+              element: <AdminRoute>
+ <AdminDashboard/>,
+              </AdminRoute>
+             
+            },
            
               { path: "admin/manage-tuitions", 
                 element: <AdminRoute> 
@@ -197,7 +231,10 @@ Component: Register,
 
 
 
-
+ {
+        path: "*",
+        element: <ErrorPage></ErrorPage>
+    },
 
 
         

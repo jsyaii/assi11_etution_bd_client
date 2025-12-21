@@ -1,5 +1,3 @@
-
-
 import { useNavigate } from "react-router";
 import useAuth from "./useAuth";
 import { useEffect } from "react";
