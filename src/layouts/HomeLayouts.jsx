@@ -7,7 +7,7 @@ import LatestTuitions from '../pages/Home/LatestTuitions/LatestTuitions';
 
 const HomeLayouts = () => {
     return (
-        <div>
+        <div className="bg-gradient-to-br from-[#F3E8FF] via-[#E0D7FF] to-[#D9B6FF] min-h-screen">
             <Banner></Banner>
             <LatestTutors></LatestTutors>
             <Works></Works>

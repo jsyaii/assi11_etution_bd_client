@@ -1,5 +1,3 @@
-
-
 import { useNavigate } from "react-router";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useRole from "../../../hook/useRole";
@@ -75,7 +73,7 @@ const AdminRevenue = () => {
                 </table>
                 <hr className="mt-5 border-t border-white/20" />
                 <div className="mt-2 text-center text-white">
-                    <p className="text-2xl font-medium text-white text-center">
+                    <p className="text-2xl font-medium text-black text-center">
                         Total Platform Revenue :
                         <span className="text-[#00bba7]">
                             ৳{allPayments

@@ -140,26 +140,12 @@ const MyTuitions = () => {
                                 <th className="text-gray-500">{index + 1}</th>
                                 <td className="font-normal text-center">{tuition.subject}</td>
                                 <td className="text-center">{tuition.location} ({tuition.mode})</td>
-                                {/* <td className="text-center">
-                                    <span className={` ${tuition.paymentStatus === 'Paid' ? 'text-green-500' : 'badge-warning'}`}>
-
-                                        {tuition.paymentStatus === 'Paid' ? 'Paid' : 
-                                        <div
-                                        onClick={  (e) => { e.stopPropagation(); handlePayment(tuition); }  }
-                                         className="flex justify-center items-center btn bg-green-500 text-sm break-none text-black hover:bg-green-300/50 gap-2">
-                                            {isClicked ? (
-                                                            <span className="loading loading-spinner loading-xs"></span>
-                                                          ) : (
-                                                            <div className="flex justify-center items-center">Pay</div>
-                                                          )}
-                                            </div>}
-                                    </span>
-                                </td> */}
+                                
                                 <td className="flex justify-center items-center gap-2">
 
                                     <button
                                         onClick={(e) => { e.stopPropagation(); navigate(`/tuitions/${tuition._id}`) }}
-                                        className=" btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50">View</button>
+                                        className=" btn btn-neutral rounded-2xl bg-blue-500 text-black hover:bg-blue-400/50">View</button>
 
                                     <button
                                         onClick={(e) => { e.stopPropagation(); handleTuitionEdit(tuition); }}

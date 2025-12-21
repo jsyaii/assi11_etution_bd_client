@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../hook/useAuth";
-import useAxiosSecure from "../../hook/useAxiosSecure";
-import Loading from "../../Components/Loading/Loading";
+import useAuth from "../../../hook/useAuth";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
 import { FaUserEdit } from "react-icons/fa";
 
@@ -61,11 +61,11 @@ const MyProfile = () => {
 
           {/* Profile Info */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-5xl font-bold mb-4">{profile.displayName}</h1>
-            <p className="text-2xl text-teal-400 mb-2">{profile.email}</p>
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">{profile.displayName}</h1>
+            <p className="text-2xl text-blue-400 mb-2">{profile.email}</p>
 
             <div className="flex items-center justify-center md:justify-start gap-3">
-              <span className="badge bg-teal-400 text-black px-4 py-1 rounded-full">
+              <span className="badge bg-blue-400 text-black px-4 py-1 rounded-full">
                 {profile.userRole === "tutor"
                   ? "Tutor"
                   : profile.userRole === "admin"

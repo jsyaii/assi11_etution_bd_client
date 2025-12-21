@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Loading from "../../../Components/Loading/Loading";
@@ -16,6 +14,8 @@ import { Bar,
            Tooltip,
             XAxis, 
             YAxis } from "recharts";
+
+            
 
 const AdminDashboard = () => {
   const axiosSecure = useAxiosSecure();

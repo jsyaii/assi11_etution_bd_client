@@ -1,5 +1,3 @@
-
-
 import { Link, useSearchParams } from "react-router";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useEffect } from "react";

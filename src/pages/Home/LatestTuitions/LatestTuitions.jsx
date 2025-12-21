@@ -14,7 +14,7 @@ const LatestTuitions = () => {
   useEffect(() => {
     setLoading(true);
     axiosSecure
-      .get("/newtuitions") // Backend endpoint for latest tuitions
+      .get("/newtuitions") 
       .then((res) => {
         setTuitions(res.data);
         setLoading(false);

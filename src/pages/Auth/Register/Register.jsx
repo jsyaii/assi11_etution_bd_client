@@ -1,5 +1,3 @@
-
-
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hook/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -83,7 +81,7 @@ const handleRegistration = async (data) => {
   name: data.name,
   email: data.email,
   phone: data.phone,
-  userRole: data.role, // ✅ THIS IS THE FIX
+  userRole: data.role, 
   photoURL,
   createdAt: new Date(),
 };

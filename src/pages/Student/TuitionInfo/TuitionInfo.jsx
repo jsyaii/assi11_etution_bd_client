@@ -177,16 +177,7 @@ const handleRejectTuition = async () => {
       }
     });
 
-//     //apply as tutor
-//     const handleApplyasTutor = () => {
-
-
-
-//     }
-
-  }
-
-  //apply as tutor
+  };
   const handleApplyasTutor = async () => {
 
     const result = await Swal.fire(

@@ -155,12 +155,7 @@ const AdminManageUser = () => {
                             </td>
 
                             <td onClick={(e) => e.stopPropagation()} className="flex justify-center items-center text-center mx-auto mt-1">
-                                {/* <button
-                                    onClick={() => handleViewUser(user)}
-                                    className="btn btn-xs h-7 btn-neutral bg-teal-500 hover:bg-teal-600 text-black/80"
-                                >
-                                    <BsFillEyeFill className="w-4 scale-180" />
-                                </button> */}
+                                
 
                                 <button
                                     onClick={() => handleEditUser(user)}

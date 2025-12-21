@@ -1,5 +1,3 @@
-
-
 import { useNavigate } from "react-router";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useAuth from "../../hook/useAuth";

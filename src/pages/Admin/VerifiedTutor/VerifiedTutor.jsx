@@ -91,7 +91,7 @@ const VerifyTutor = () => {
               <td>{index + 1}</td>
               <td>{tutor.name}</td>
               <td>{tutor.email}</td>
-              <td className="text-green-400">{tutor.phone}</td>
+              <td className="text-black">{tutor.phone}</td>
 
               {/* Status */}
               <td

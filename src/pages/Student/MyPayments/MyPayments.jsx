@@ -1,9 +1,3 @@
-// import React from 'react';
-// import useAxiosSecure from '../../Components/Hooks/useAxiosSecure';
-// import useAuth from '../../Components/Hooks/useAuth';
-// import { useNavigate } from 'react-router';
-// import { useQuery } from '@tanstack/react-query';
-
 import { useNavigate } from "react-router";
 import useAuth from "../../../hook/useAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";

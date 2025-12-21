@@ -1,16 +1,101 @@
-# React + Vite
+# 🎓 eTuitionBD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Purpose
+**eTuitionBD** is an online tuition management platform designed to connect students, tutors, and administrators in one centralized system.  
+The platform simplifies posting tuition jobs, applying as a tutor, managing applications, and ensuring quality control through admin verification.
 
-Currently, two official plugins are available:
+This project aims to make the tuition hiring process **transparent, efficient, and secure** for all users.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👩‍🎓 Student Features
+- Create and manage tuition posts
+- View and review tutor applications
+- Secure payment system for tuition fees
+- Track application and payment status
 
-## Expanding the ESLint configuration
+### 👨‍🏫 Tutor Features
+- Apply for tutor verification
+- Browse and apply for tuition jobs
+- View approved applications
+- Receive payments through Stripe integration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛡️ Admin Features
+- Verify and approve tutors
+- Approve or reject tuition posts
+- Manage users (students, tutors, admins)
+- View all transactions and payment logs
+
+### 🌐 General Features
+- Role-based authentication (Student / Tutor / Admin)
+- Secure Firebase authentication
+- JWT-protected API routes
+- Responsive UI for all devices
+- Real-time data fetching using React Query
+
+---
+
+## 🔗 Live Website
+👉 **Live URL:** https://etutionbd.web.app  
+*(Replace with your actual deployed link if different)*
+
+---
+
+## 🧰 Technologies & Packages Used
+
+### 🖥️ Frontend
+- **React**
+- **React Router**
+- **React Hook Form**
+- **@tanstack/react-query**
+- **Axios**
+- **SweetAlert2**
+- **Tailwind CSS**
+- **React Icons**
+- **Firebase Authentication**
+
+### 🗄️ Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **Firebase Admin SDK**
+- **Stripe Payment Gateway**
+- **JWT (JSON Web Token)**
+- **dotenv**
+- **cors**
+
+---
+
+## 🔐 Authentication & Security
+- Firebase Authentication (Email & Social Login)
+- JWT token verification for protected routes
+- Admin-only access control for sensitive operations
+- Secure payment handling via Stripe
+
+---
+
+## 📂 Project Structure
+- `client/` – Frontend React application
+- `server/` – Express server & API routes
+- `database/` – MongoDB collections (users, tutors, tuitions, applications)
+
+---
+
+## 📈 Future Enhancements
+- Tutor rating & review system
+- Advanced tuition filtering & bookmarking
+- Real-time notifications
+- Chat system between students and tutors
+
+---
+
+## 👤 Author
+**Jasia Hassan**  
+
+
+---
+
+## 📜 License
+This project is for **educational and portfolio purposes**.
