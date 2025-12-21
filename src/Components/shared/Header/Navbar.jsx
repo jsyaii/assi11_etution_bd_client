@@ -60,16 +60,6 @@ const Navbar = () => {
 
         <div>
 
-<NavLink
-  to="/chat"
-  className= {({ isActive }) =>
-    `w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all ${isActive ? "bg-[#00bba7] text-black shadow-lg" : "text-gray-300 hover:bg-white/10"}`
-  }
->
-  <BsChatDots className="text-2xl" />
-  <span className="text-lg font-medium">Chat</span>
-</NavLink>
-
 
 </div>
 

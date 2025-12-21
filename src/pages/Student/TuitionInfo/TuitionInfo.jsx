@@ -12,6 +12,7 @@ import { IoArrowForward } from "react-icons/io5";
 import { GrFormNext } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
+import Logo from "../../../Components/Logo/Logo";
 
 const TuitionInfo = () => {
   const { id } = useParams();
@@ -238,131 +239,122 @@ const handleRejectTuition = async () => {
   const currentDBUser = users.find((u) => u.email === user?.email);
   
 
-  return (
-    <div className="flex justify-center py-10 bg-gray-900 ">
-      <div className="card w-full max-w-4xl shadow-2xl bg-gray-800 text-white ">
-        <div>
-          <img
-            src={tuition.image}
-            alt={tuition.title}
-            className="w-full h-50 object-cover"
-          />
-        </div>
+ return (
+  <div className="flex justify-center py-10 bg-gradient-to-br from-[#F3E8FF] via-[#E0D7FF] to-[#D9B6FF] min-h-screen">
+    <div className="card w-full max-w-4xl shadow-2xl bg-white/10 backdrop-blur-2xl text-[#4B0082] border border-white/20">
+     
+      <div>
+        <img
+          src={tuition.image}
+          alt={tuition.title}
+          className="w-full h-50 object-cover rounded-t-3xl"
+        />
+        
+      </div>
+      <div>
+       
+      </div>
 
-        <div className="card-body p-8">
-          <h2 className="card-title text-6xl font-bold mb-2 text-white flex flex-col">
-            {tuition.subject}
-            <div className="text-xl text-gray-400 font-normal ">Created By : </div>
-            <div className="text-3xl text-white font-normal">{tuition?.creatorEmail}</div>
-          </h2>
+      <div className="card-body p-8">
+        <h2 className="card-title text-6xl font-bold mb-2 flex flex-col">
+          {tuition.subject}
+          <div className="text-xl text-[#6B21A8] font-normal">Created By :</div>
+          <div className="text-3xl text-[#4B0082] font-normal">{tuition?.creatorEmail}</div>
+        </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-gray-700 rounded p-4">
-              <div className="text-gray-400 text-xl">Payment Status</div>
-              <div className="text-2xl text-white">
-                {tuition.paymentStatus?.charAt(0).toUpperCase() +
-                  tuition.paymentStatus?.slice(1)}
-              </div>
-            </div>
-            <div className="bg-gray-700 rounded p-4">
-              <div className="text-gray-400 text-xl">Status</div>
-              <div className="text-2xl text-white">
-                {tuition.approvalStatus || "Pending"}
-              </div>
-            </div>
-            <div className="bg-gray-700 rounded p-4">
-              <div className="text-gray-400 text-xl">Location</div>
-              <div className="text-2xl">
-                {tuition.mode} : {tuition.location}
-              </div>
-            </div>
-            <div className="bg-gray-700 rounded p-4">
-              <div className="text-gray-400 text-xl">Fee</div>
-              <div className="flex gap-2 items-center">
-                <div className="text-green-400 font-bold text-3xl">
-                  ৳ {tuition.fee.toLocaleString()}
-                </div>
-                <div className="text-lg text-gray-400">(${toUSD})</div>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white/20 rounded p-4">
+            <div className="text-[#6B21A8] text-xl">Payment Status</div>
+            <div className="text-2xl text-[#4B0082]">
+              {tuition.paymentStatus?.charAt(0).toUpperCase() + tuition.paymentStatus?.slice(1)}
             </div>
           </div>
 
-          <div className="card-actions justify-center gap-2 mt-8">
+          <div className="bg-white/20 rounded p-4">
+            <div className="text-[#6B21A8] text-xl">Status</div>
+            <div className="text-2xl text-[#4B0082]">
+              {tuition.approvalStatus || "Pending"}
+            </div>
+          </div>
 
-            {isCreator && <button
+          <div className="bg-white/20 rounded p-4">
+            <div className="text-[#6B21A8] text-xl">Location</div>
+            <div className="text-2xl text-[#4B0082]">
+              {tuition.mode} : {tuition.location}
+            </div>
+          </div>
+
+          <div className="bg-white/20 rounded p-4">
+            <div className="text-[#6B21A8] text-xl">Fee</div>
+            <div className="flex gap-2 items-center">
+              <div className="text-green-500 font-bold text-3xl">৳ {tuition.fee.toLocaleString()}</div>
+              <div className="text-lg text-[#6B21A8]">(${toUSD})</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="card-actions justify-center gap-2 mt-8">
+          {isCreator && (
+            <button
               onClick={handleTuitionEdit}
               disabled={!isCreator}
-              className="btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50 w-1/3 h-12 text-xl"
+              className="btn rounded-2xl bg-purple-400 text-white hover:bg-purple-300/50 w-1/3 h-12 text-xl flex items-center justify-center gap-2"
             >
-              <FiEdit></FiEdit>
-              Edit Tuition
-            </button>}
+              <FiEdit /> Edit Tuition
+            </button>
+          )}
 
-
-
-            {isCreator && <button
+          {isCreator && (
+            <button
               onClick={handlePayment}
               disabled={isClicked}
-              className="btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50 w-1/3 h-12 text-xl">
-
-              {isClicked ? (
-                <span className="loading loading-spinner loading-xs"></span>
-              ) : (
-                <div className="flex justify-center items-center">Pay now <IoArrowForward></IoArrowForward></div>
-              )}
-
-            </button>}
+              className="btn rounded-2xl bg-purple-400 text-white hover:bg-purple-300/50 w-1/3 h-12 text-xl flex items-center justify-center gap-2"
+            >
+              {isClicked ? <span className="loading loading-spinner loading-xs"></span> : <>Pay now <IoArrowForward /></>}
+            </button>
+          )}
 
           {isTutor && !isCreator && (
-  <button
-    onClick={handleApplyasTutor}
-    className="btn btn-neutral rounded-2xl bg-teal-500 text-black hover:bg-teal-300/50 w-1/3 h-12 text-xl"
-  >
-    Apply as Tutor
-    <GrFormNext />
-  </button>
-)}
+            <button
+              onClick={handleApplyasTutor}
+              className="btn rounded-2xl bg-purple-400 text-white hover:bg-purple-300/50 w-1/3 h-12 text-xl flex items-center justify-center gap-2"
+            >
+              Apply as Tutor <GrFormNext />
+            </button>
+          )}
 
-
-
-
-            {isCreator && <button
+          {isCreator && (
+            <button
               onClick={handleDeleteTuition}
-              className="btn btn-neutral rounded-full bg-teal-500 text-black h-12 text-xl hover:bg-red-500/85"
+              className="btn rounded-full bg-red-500 text-white h-12 text-xl hover:bg-red-600 flex items-center justify-center"
             >
               <MdDelete />
-            </button>}
-
-          </div>
-          <div>
-            {/* ================= ADMIN CONTROLS ================= */}
-{isAdmin && (
-  <div className="flex gap-3 w-full justify-center">
-    
-    {/* Approve Button */}
-    <button
-      onClick={handleApproveTuition}
-      className="btn bg-green-500 hover:bg-green-600 text-black text-xl rounded-xl px-6"
-    >
-      Approve
-    </button>
-
-    {/* Reject Button */}
-    <button
-      onClick={handleRejectTuition}
-      className="btn bg-red-500 hover:bg-red-600 text-white text-xl rounded-xl px-6"
-    >
-      Reject
-    </button>
-
-  </div>
-)}
-
-          </div>
+            </button>
+          )}
         </div>
+
+        {/* Admin Controls */}
+        {isAdmin && (
+          <div className="flex gap-3 w-full justify-center mt-6">
+            <button
+              onClick={handleApproveTuition}
+              className="btn bg-green-400 hover:bg-green-500 text-white text-xl rounded-xl px-6"
+            >
+              Approve
+            </button>
+            <button
+              onClick={handleRejectTuition}
+              className="btn bg-red-400 hover:bg-red-500 text-white text-xl rounded-xl px-6"
+            >
+              Reject
+            </button>
+          </div>
+        )}
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default TuitionInfo;

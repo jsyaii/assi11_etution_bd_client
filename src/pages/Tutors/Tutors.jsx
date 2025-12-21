@@ -35,14 +35,17 @@ const Tutors = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center text-center flex-col">
-        <h3 className="text-4xl text-white text-center pt-15">All Tutors</h3>
+      <div className="flex justify-center items-center text-center flex-col
+          
+            mt-10 mb-10
+              ">
+        <h3 className="text-4xl text-gray-900 text-center pt-15">All Tutors</h3>
       {!roleLoading && role === "Tutor" && (
   <Link
     to="/newtutor"
     className="btn w-[20rem] h-20 mt-5 rounded-4xl text-2xl 
-               hover:scale-103 btn-neutral bg-teal-500 
-               text-black hover:bg-teal-300/50"
+               hover:scale-103 btn-neutral bg-purple-500 
+               text-gray-900 hover:bg-blue-300"
   >
     <IoPersonAdd className="scale-105 mr-2" />
     Become a Tutor!

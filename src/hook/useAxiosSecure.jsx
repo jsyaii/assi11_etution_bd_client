@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000", // backend URL
+  baseURL: "https://assi11-etution-bd-server.vercel.app", // backend URL
 });
 
 const useAxiosSecure = () => {
@@ -14,8 +14,8 @@ const useAxiosSecure = () => {
   useEffect(() => {
 
 
-  
-      
+
+
 
     // REQUEST INTERCEPTOR
     const requestInterceptor = axiosSecure.interceptors.request.use(

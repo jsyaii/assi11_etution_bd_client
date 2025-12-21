@@ -70,9 +70,11 @@ const CreateTuition = () => {
                 {...register('subject', { required: true })}
                 type="text"
                 placeholder="Physics, ICT, English"
-                className="w-full px-5 py-4 rounded-xl bg-white/10
-                  border border-white/20 text-gray-900 
-                  focus:ring-2 focus:ring-blue-200 outline-none"
+                className="w-full px-6 py-4 rounded-xl
+                          
+                          text-gray-900 
+        
+                           border-blue-200"
               />
               {errors.subject && (
                 <p className="text-red-400 mt-2 text-sm">

@@ -76,7 +76,7 @@ const Tuitions = () => {
         {role === "Student" && (
           <Link
             to="/dashboard/newtuitions"
-            className="btn w-[20rem] h-20 mt-5 rounded-4xl text-2xl hover:scale-103 btn-neutral bg-teal-500 text-black hover:bg-teal-300/50 flex items-center justify-center gap-2"
+            className="btn w-[20rem] h-20 mt-5 rounded-4xl text-2xl hover:scale-103 btn-neutral bg-purple-500 text-gray-900 hover:bg-blue-300 flex items-center justify-center gap-2"
           >
             <IoMdAdd className="scale-120" /> Post a Tuition
           </Link>
@@ -89,12 +89,12 @@ const Tuitions = () => {
             placeholder="Search by Class, Subject, or Location"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 p-4 rounded-3xl border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-400 text-black"
+            className="flex-1 p-4 rounded-3xl border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 text-gray-900"
           />
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="p-4 rounded-3xl border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-400 text-black"
+            className="p-4 rounded-3xl border border-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-400 text-gray-900"
           >
             <option value="">Sort By</option>
             <option value="budget">Budget (Low to High)</option>

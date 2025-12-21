@@ -30,7 +30,7 @@ import About from "../Components/About/About";
 import ErrorPage from "../Components/Error/Error";
 import AdminRevenue from "../pages/Admin/AdminRevenue/AdminRevenue";
 import AdminDashboard from "../pages/Admin/AdminDashboard/AdminDashboard";
-import Chat from "../Components/Chat/Chat";
+
 
 
 
@@ -46,10 +46,11 @@ index:true,
 Component: HomeLayouts
         },
 
+
         { path: "tuitions",
            element: <Tuitions />
            },
-        
+
             { path: "tuitions/:id",
                element: <PrivateRoute>
                  <TuitionInfo />
@@ -65,10 +66,15 @@ Component: HomeLayouts
                    { path: "about", 
                     element: <About></About>
                      },
-{
-path: "/chat", 
-                    element: <Chat></Chat>
-},
+
+{ path: "/newtutor",
+  element: <PrivateRoute>
+    <TutorRoute>
+      <CreateTutor/>,
+    </TutorRoute>
+    </PrivateRoute> },
+
+
 
 {
 path: "/",
@@ -88,12 +94,7 @@ Component: Register,
 },
 
 
-  { path: "/newtutor",
-  element: <PrivateRoute>
-    <TutorRoute>
-      <CreateTutor/>,
-    </TutorRoute>
-    </PrivateRoute> },
+  
 
 
     ]
@@ -227,8 +228,6 @@ Component: Register,
             
         ],
     },
- 
-
 
 
  {
